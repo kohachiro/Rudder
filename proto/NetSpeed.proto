@@ -1,0 +1,11 @@
+package net.combatserver.protobuf; 
+
+option optimize_for = SPEED;  
+
+message NetSpeedRequestData {
+	required int64 time =1;//
+}
+message NetSpeedResponseData {
+	required int32 delay =1;//延迟
+	required int64 time =2;//服务器时间
+}

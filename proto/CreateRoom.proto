@@ -1,0 +1,17 @@
+package net.combatserver.protobuf; 
+import "DataStructures.proto";
+
+option optimize_for = SPEED;  
+
+message CreateRoomRequestData {
+	required int32 templateid = 1;
+	required string name = 2;
+	required string password = 3;
+
+}
+message CreateRoomResponseData {
+	required Room room = 1;
+}
+message NewRoomNoticeData {
+	required Room room = 1;
+}

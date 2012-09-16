@@ -1,0 +1,6 @@
+package net.combatserver.protobuf; 
+option optimize_for = SPEED;  
+
+message RoomMessageRequestData{
+	required string message = 1;//ÄÚÈİ
+}

@@ -1,0 +1,7 @@
+package net.combatserver.protobuf; 
+
+option optimize_for = SPEED;  
+
+message RoomRemoveNoticeData {
+	required int32 roomid = 1;
+}

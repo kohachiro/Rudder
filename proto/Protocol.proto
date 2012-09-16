@@ -1,0 +1,64 @@
+package net.combatserver.protobuf; 
+ 
+option optimize_for = SPEED;  
+
+enum MessageHandler {
+	PolicyFileRequest		= 15472;//1014001516;
+	HttpGetRequest			= 18245;//1195725856;
+	HttpPostRequest			= 20559;//1347375956;
+
+	PingIntervalRequest		= 300;
+	RoomListNotice			= 1;
+	UserListNotice			= 2;
+	ZoneListNotice 			= 3;
+
+	NetSpeedRequest			= 304;
+	NetSpeedResponse		= 5;
+
+	GetZoneRequest			= 6;
+	GetZoneResponse 		= 7;
+
+	CreateRoomRequest		= 8;
+	CreateRoomResponse		= 9;
+	NewRoomNotice	 		= 10;
+
+	RoomPropertyUpdateRequest	= 11;
+	RoomPropertyUpdateNotice	= 12;
+	UserPropertyUpdateRequest	= 13;
+	UserPropertyUpdateNotice	= 14;
+	
+	PrivateMessageRequest		= 25;
+	MessageByNameRequest		= 26;
+	RoomMessageRequest		= 27;	
+	ZoneMessageRequest		= 28;	
+	ServerMessageRequest		= 29;
+	NewMessageNotice		= 30;
+
+	PluginRequest			= 40;
+	PluginResponse			= 41;
+	PluginNotice			= 42;
+
+	JoinServerRequest		= 50;
+	JoinServerResponse		= 51;
+	JoinDefaultRoomRequest		= 352;
+	JoinRoomResponse		= 53;
+	ChangeRoomRequest		= 54;
+	ChangeRoomResponse		= 55;
+	NewUserNotice			= 56;
+	
+
+	LogoutRequest			= 60;
+	UserLeaveNotice			= 61;
+	DisconnectedRequest		= 62;
+
+	RoomRemoveNotice 		= 68;
+	ServerErrorResponse		= 369;
+
+	ServerTimeResponse 		= 380;
+
+
+//	CheckUserRequest		= 90;
+//	CheckUserResponse		= 91;
+//	CreateUserRequest		= 92;
+//	UserNotFoundResponse		= 93;
+}

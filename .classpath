@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/netty-3.2.6.Final.jar" sourcepath="netty-3.2.6.Final-sources.jar"/>
+	<classpathentry kind="lib" path="lib/protobuf-java-2.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/grizzly-framework-2.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/mina-core-2.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/javac.jar"/>
+	<classpathentry kind="lib" path="lib/bonecp-0.7.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-3.1.14-bin.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-nop-1.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/google-collections-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jedis-2.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,11 @@
+package net.combatserver.protobuf; 
+import "DataStructures.proto";
+option optimize_for = SPEED;  
+
+message RoomPropertyUpdateRequestData {
+	required Property property = 1;
+}
+message RoomPropertyUpdateNoticeData {
+	required int32 id  = 1;
+	repeated Property properties = 2;
+}

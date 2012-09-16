@@ -1,0 +1,15 @@
+package net.combatserver.protobuf; 
+option optimize_for = SPEED;  
+
+enum MessageRouter {
+	ROUTER_USER = -1;
+	ROUTER_ROOM = -2;
+	ROUTER_ZONE = -3;
+	ROUTER_SERVER = -4;
+}
+message NewMessageNoticeData{
+	required int32 userid = 1;//来自
+	required string username = 2;//来自
+	required MessageRouter router = 3;//路由
+	required string message = 4;//内容
+}

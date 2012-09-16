@@ -1,0 +1,6 @@
+package net.combatserver.protobuf; 
+option optimize_for = SPEED;
+message PrivateMessageRequestData{
+	required string message = 1;//ÄÚÈİ
+	required int32 userid = 2;//Ä¿±ê
+}

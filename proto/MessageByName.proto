@@ -1,0 +1,6 @@
+package net.combatserver.protobuf; 
+option optimize_for = SPEED; 
+message MessageByNameRequest{
+	required string message = 1;//ÄÚÈİ
+	required string username = 2;//Ä¿±ê
+}

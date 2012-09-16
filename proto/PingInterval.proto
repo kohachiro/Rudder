@@ -1,0 +1,7 @@
+package net.combatserver.protobuf; 
+
+option optimize_for = SPEED;  
+
+message PingIntervalRequestData {
+	required int64 time =1;//直接发送不使用proto
+}

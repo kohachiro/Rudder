@@ -1,0 +1,12 @@
+package net.combatserver.protobuf; 
+import "DataStructures.proto";
+option optimize_for = SPEED;  
+
+message JoinServerRequestData {
+	required string username = 1;
+	required string password = 2;
+}
+message JoinServerResponseData {
+	required int32 pingInterval = 1;//pingËÙ 
+	required User user = 2;
+}

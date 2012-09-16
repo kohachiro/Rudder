@@ -1,0 +1,10 @@
+package net.combatserver.protobuf; 
+import "DataStructures.proto";
+option optimize_for = SPEED;  
+
+message JoinDefaultRoomRequestData {
+	//
+}
+message JoinRoomResponseData {
+	required Room room = 1;
+}

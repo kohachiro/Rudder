@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<server>
+		<name value="CombatServer" />
+		<port value="6789" />
+		<policy_file_port value="843" />
+		<admin_name value="CombatServer" />
+		<admin_pass value="6789" />
+		<logfile value="td.log" />
+		<logfile_limit_mb value="64" />
+		<loglevel value="info" />
+		<master_client_timeout_seconds value="60" />
+		<max_client_message_size_kb value="100" />
+		<ping_intervall value="10000" />
+		<default_room_id value="1" />
+		<zone>
+			<id value="1" />
+			<name value="lobby" />
+			<send_room_change_to value="1" />
+			<send_user_count_change value="true" />
+			<create_room value="true" />
+			<max_rooms value="100" />
+			<property name="Z1" value="SX" />
+			<property name="Z2" value="SY" />
+			<team>
+				<id value="1" />
+				<name value="Default" />
+				<max_team_members value="100" />
+				<property name="T1" value="0" />
+				<property name="T2" value="1" />
+			</team>
+			<room>
+				<id value="1" />
+				<name value="lobbyRoom" />
+				<from value="1" />
+				<to value="1" />
+				<password value="" />
+				<visible value="false" />
+				<sendUserList value="true" />
+				<max_users value="100" />
+				<spectator_limit value="1" />
+				<property name="BANLIST"  value="1" />
+				<property name="ISRECORDTODB"  value="1" />
+			</room>
+			<room>
+				<id value="2" />
+				<name value="BOSS挑战赛" />
+				<from value="1" />
+				<to value="1" />
+				<password value="" />
+				<visible value="true" />
+				<sendUserList value="true" />
+				<max_users value="100" />
+				<spectator_limit value="1" />
+				<property name="模式"  value="PVP" />
+				<property name="地图"  value="随机" />
+				<property name="难度"  value="简单" />
+			</room>
+			<room>
+				<id value="3" />
+				<name value="3vs3挑战赛" />
+				<from value="1" />
+				<to value="1" />
+				<password value="" />
+				<visible value="true" />
+				<sendUserList value="true" />
+				<max_users value="100" />
+				<spectator_limit value="1" />
+				<property name="模式"  value="PVP" />
+				<property name="地图"  value="随机" />
+				<property name="难度"  value="中等" />
+			</room>
+			<room_template>
+				<id value="1" />
+				<name value="1V1 PVP" />
+				<max_users value="2" />
+				<scheduled value="serverlogic.ScheduledDemo" />
+				<property name="模式"  value="1V1 PVP" />
+				<property name="地图"  value="随机" />
+				<property name="难度"  value="困难" />
+			</room_template>
+			<room_template>
+				<id value="2" />
+				<name value="2V2 PVP" />
+				<max_users value="4" />
+				<scheduled value="serverlogic.ScheduledDemo" />
+				<property name="模式"  value="2V2 PVP" />
+				<property name="地图"  value="随机" />
+				<property name="难度"  value="困难" />
+			</room_template>
+			<room_template>
+				<id value="3" />
+				<name value="3v3 PVP" />
+				<max_users value="6" />
+				<scheduled value="serverlogic.ScheduledDemo" />
+				<property name="模式"  value="3v3 PVP" />
+				<property name="地图"  value="随机" />
+				<property name="难度"  value="困难" />
+			</room_template>
+		</zone>	
+		<zone>
+			<id value="2" />
+			<name value="1V1 PVP" />
+			<send_room_change_to value="0" />
+			<send_user_count_change value="false" />
+			<create_room value="true" />
+			<max_rooms value="100" />
+			<room>
+				<id value="4" />
+				<name value="3vs3挑战赛" />
+				<from value="1" />
+				<to value="1" />
+				<password value="" />
+				<visible value="true" />
+				<sendUserList value="true" />
+				<max_users value="100" />
+				<spectator_limit value="1" />
+				<property name="模式"  value="PVP" />
+				<property name="地图"  value="随机" />
+				<property name="难度"  value="中等" />
+			</room>
+			<room_template>
+				<id value="4" />
+				<name value="1V1 PVP" />
+				<max_users value="2" />
+				<scheduled value="serverlogic.ScheduledCombat1V1" />
+				<property name="模式"  value="1V1 PVP" />
+				<property name="地图"  value="随机" />
+				<property name="难度"  value="困难" />
+			</room_template>			
+		</zone>			
+	</server>
+</config>
