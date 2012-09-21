@@ -7,7 +7,7 @@ public interface EventHandler
     public static final String  onJoinRoom = "onJoinRoom";
     public static final String  onRoomList = "onRoomList";
     public static final String  onUserList = "onUserList";
-    public static final String  onZoneInfo = "onZoneInfo";
+    public static final String  onRegionInfo = "onRegionInfo";
     public static final String  onConnected = "onConnected";
     public static final String  onCheckTime = "onCheckTime";    
     public static final String  onUserLeave = "onUserLeave";

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 
 import net.combatserver.core.AbstractServer;
-import net.combatserver.core.InterfaceServerHandler;
+import net.combatserver.core.ServerHandler;
 
 import org.glassfish.grizzly.Buffer;
 import org.glassfish.grizzly.Connection;
@@ -16,7 +16,7 @@ import org.glassfish.grizzly.filterchain.NextAction;
  * @author kohachiro
  *
  */
-public class GrizzlyServerHandler extends BaseFilter implements InterfaceServerHandler {
+public class GrizzlyServerHandler extends BaseFilter implements ServerHandler {
 	/**
 	 * 
 	 */

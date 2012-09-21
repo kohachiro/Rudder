@@ -3,7 +3,7 @@ package net.combatserver.framework;
 import java.nio.ByteBuffer;
 
 import net.combatserver.core.AbstractServer;
-import net.combatserver.core.InterfaceServerHandler;
+import net.combatserver.core.ServerHandler;
 
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.future.IoFutureListener;
@@ -16,7 +16,7 @@ import org.apache.mina.core.session.IoSession;
  *
  */
 public class MinaServerHandler extends IoHandlerAdapter implements
-		InterfaceServerHandler {
+		ServerHandler {
 
 	/**
 	 * 

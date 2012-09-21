@@ -10,8 +10,8 @@ package net.combatserver.protobuf {
 		public static const STATUS_ROOM_WRONG_PASSWORD:int = -16;
 		public static const STATUS_ROOM_TEMPLATE_NOT_FOUND:int = -17;
 		public static const STATUS_ROOM_NULL:int = -18;
-		public static const STATUS_ZONE_FULL:int = -19;
-		public static const STATUS_ZONE_NOT_FOUND:int = -20;
+		public static const STATUS_REGION_FULL:int = -19;
+		public static const STATUS_REGION_NOT_FOUND:int = -20;
 		public static const STATUS_SERVER_FULL:int = -21;
 		public static const STATUS_USER_NOT_FOUND:int = -22;
 		public static const STATUS_PLUGIN_NOT_FOUND:int = -25;
@@ -49,10 +49,10 @@ package net.combatserver.protobuf {
 					return "STATUS_ROOM_TEMPLATE_NOT_FOUND";
 				case STATUS_ROOM_NULL:
 					return "STATUS_ROOM_NULL";
-				case STATUS_ZONE_FULL:
-					return "STATUS_ZONE_FULL";
-				case STATUS_ZONE_NOT_FOUND:
-					return "STATUS_ZONE_NOT_FOUND";
+				case STATUS_REGION_FULL:
+					return "STATUS_REGION_FULL";
+				case STATUS_REGION_NOT_FOUND:
+					return "STATUS_REGION_NOT_FOUND";
 				case STATUS_SERVER_FULL:
 					return "STATUS_SERVER_FULL";
 				case STATUS_USER_NOT_FOUND:

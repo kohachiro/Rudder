@@ -125,7 +125,7 @@ package net.combatserver
 			}
 		}
 		
-		public function onZoneInfo(zone:Zone):void
+		public function onRegionInfo(region:Region):void
 		{
 			connection.joinDefaultRoomRequest();
 		}
@@ -165,7 +165,7 @@ package net.combatserver
 		public function onJoinServer(user:User):void
 		{
 			ui.userListLabel.text="User:"+user.name;
-			connection.getZoneRequest(1);
+			connection.getRegionRequest(1);
 		}
 		
 		public function onNewMessage(router:int, message:String, user:User):void

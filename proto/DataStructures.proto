@@ -8,7 +8,7 @@ message Property {
 	required string value = 2;
 }
 
-message Zone {
+message Region {
 	required int32 id=1;
 	required string name=2;
 	repeated Property properties = 3;

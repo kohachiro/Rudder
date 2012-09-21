@@ -3,6 +3,6 @@ import "DataStructures.proto";
 
 option optimize_for = SPEED;  
 
-message ZoneListNoticeData {
-	repeated Zone zone = 1;
+message RegionListNoticeData {
+	repeated Region region = 1;
 }

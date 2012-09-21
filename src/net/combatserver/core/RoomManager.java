@@ -21,7 +21,7 @@ import net.combatserver.serverlogic.Room;
 import net.combatserver.serverlogic.Scheduled;
 import net.combatserver.serverlogic.Template;
 import net.combatserver.serverlogic.User;
-import net.combatserver.serverlogic.Zone;
+import net.combatserver.serverlogic.Region;
 
 /**
  * ROOM管理类<br/>
@@ -37,21 +37,21 @@ public class RoomManager {
 	/**
 	 * room map 通过 id 查找
 	 */
-	final static Map<Integer, Room> rooms = new ConcurrentHashMap<Integer, Room>();
+	final static ConcurrentHashMap<Integer, Room> rooms = new ConcurrentHashMap<Integer, Room>();
 	/**
 	 * zoom map 通过 id 查找
 	 */
-	final static Map<Integer, Zone> zones = new ConcurrentHashMap<Integer, Zone>();
+	final static ConcurrentHashMap<Integer, Region> regions = new ConcurrentHashMap<Integer, Region>();
 	/**
 	 * template map 通过 id 查找
 	 */
-	final static Map<Integer, Template> templates = new ConcurrentHashMap<Integer, Template>();
+	final static ConcurrentHashMap<Integer, Template> templates = new ConcurrentHashMap<Integer, Template>();
 
 	/**
 	 * 
 	 */
 	public RoomManager() {
-		
+
 	}
 	/**
 	 * 创建新template
@@ -64,12 +64,12 @@ public class RoomManager {
 		System.out.println(template.toString());
 	}
 	/**
-	 * 创建新Zone
-	 * @param zone
+	 * 创建新Region
+	 * @param region
 	 */
-	public static void initNewZone(Zone zone) {
-		zones.put(zone.getId(), zone);
-		System.out.println(zone.toString());
+	public static void initNewRegion(Region region) {
+		regions.put(region.getId(), region);
+		System.out.println(region.toString());
 	}
 	/**
 	 * 创建新Room
@@ -91,7 +91,7 @@ public class RoomManager {
 	 */
 	public static Room createRoom(Template template, User user, String name,
 			String password) {
-		Room room = new Room(roomid.incrementAndGet(), name, true, true, template.getId(), template.getMaxUsers(), password, template.getZone(), user.getId());
+		Room room = new Room(roomid.incrementAndGet(), name, true, true, template.getId(), template.getMaxUsers(), password, template.getRegion(), user.getId());
 		//copy template properties to room properties.
 		Entry<String, String> entry;
 		for (Iterator<Entry<String, String>> it = template.getProperties().entrySet().iterator(); it
@@ -99,7 +99,7 @@ public class RoomManager {
 			entry=it.next();
 			room.addProperty(entry.getKey(),entry.getValue());
 		}
-		room.setLocked(false);
+		room.setLock(false);
 		room.setSpectatorLimit(0);
 		//create scheduled instance when room with a scheduled setting.
 		if (template.getScheduledClass()!=""){			
@@ -117,11 +117,11 @@ public class RoomManager {
 		return room;
 	}
 	/**
-	 * 添加房间 设置room对象与  zone rooms 关联
+	 * 添加房间 设置room对象与  region rooms 关联
 	 * @param room
 	 */
 	private static void addRoom(Room room) {
-		room.getZone().addRoom(room);
+		room.getRegion().addRoom(room);
 		rooms.put(room.getId(), room);
 		System.out.println(room.toString());
 	}
@@ -130,8 +130,8 @@ public class RoomManager {
 	 * @param id
 	 * @return
 	 */
-	public static Zone getZone(int id) {
-		return zones.get(id);
+	public static Region getRegion(int id) {
+		return regions.get(id);
 	}
 	/**
 	 * 
@@ -151,18 +151,18 @@ public class RoomManager {
 	}
 
 	/**
-	 * 如果Zone  设置了net.com.sunkey.serverlogic.Zone.sendUserCountChange
-	 * 和  net.com.sunkey.serverlogic.Zone.sendRoomChangeTo
-	 * 将会把Zone内部所有 Room人数变化发送到 sendRoomChangeTo指定的房间
+	 * 如果region  设置了 sendUserCountChange
+	 * 和   sendRoomChangeTo
+	 * 将会把Region内部所有 Room人数变化发送到 sendRoomChangeTo指定的房间
 	 * @param room
 	 * @param userId
 	 * @throws Exception
 	 */
 	public static void userCountChange(Room room, int userId) throws Exception {
-		if (room.getZone().isSendUserCountChange()) {
+		if (room.getRegion().isSendUserCountChange()) {
 			Properties properties = new Properties(room.getId());
 			properties.addProperty(Room.UserCountPropertyKey, String.valueOf(room.getUserNumber()));
-			roomPropertyNotice(properties, getRoom(room.getZone()
+			roomPropertyNotice(properties, getRoom(room.getRegion()
 					.getSendRoomChangeTo()), userId);
 		}
 	}
@@ -174,7 +174,7 @@ public class RoomManager {
 	public static void removeRoom(Room room) throws Exception {
 		room.closeScheduled();
 		rooms.remove(room.getId());
-		room.getZone().removeRoom(room.getId());
+		room.getRegion().removeRoom(room.getId());
 		System.out.println("Rooms:" + rooms.size());
 	}
 	
@@ -325,15 +325,15 @@ public class RoomManager {
 		}
 	}
 	/**
-	 * 发送消息到Zone
+	 * 发送消息到Region
 	 * @param mesage
 	 * @param sender
 	 * @throws Exception
 	 */
-	public static void sendToZone(Message mesage, User sender) throws Exception {
-		Zone zone = sender.getRoom().getZone();
+	public static void sendToRegion(Message mesage, User sender) throws Exception {
+		Region region = sender.getRoom().getRegion();
 		User user;
-		for (Iterator<Entry<Integer, Room>> it = zone.getRoomList().entrySet().iterator(); it
+		for (Iterator<Entry<Integer, Room>> it = region.getRoomList().entrySet().iterator(); it
 				.hasNext();) {
 			for (Iterator<Entry<Integer, User>> er = it.next().getValue().getUserList().entrySet().iterator(); er
 					.hasNext();) {
@@ -357,9 +357,9 @@ public class RoomManager {
 	public static int getRoomCount() {
 		return rooms.size();
 	}
-	public static String ZoneList() {
+	public static String RegionList() {
 		String string="";
-		for (Iterator<Entry<Integer, Zone>> it = zones.entrySet().iterator(); it.hasNext();) {
+		for (Iterator<Entry<Integer, Region>> it = regions.entrySet().iterator(); it.hasNext();) {
 			string+=it.next().getValue().toString()+"\n";
 		}
 		return string;

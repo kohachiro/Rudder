@@ -13,7 +13,7 @@
 		<max_client_message_size_kb value="100" />
 		<ping_intervall value="10000" />
 		<default_room_id value="1" />
-		<zone>
+		<region>
 			<id value="1" />
 			<name value="lobby" />
 			<send_room_change_to value="1" />
@@ -97,8 +97,8 @@
 				<property name="地图"  value="随机" />
 				<property name="难度"  value="困难" />
 			</room_template>
-		</zone>	
-		<zone>
+		</region>	
+		<region>
 			<id value="2" />
 			<name value="1V1 PVP" />
 			<send_room_change_to value="0" />
@@ -128,6 +128,6 @@
 				<property name="地图"  value="随机" />
 				<property name="难度"  value="困难" />
 			</room_template>			
-		</zone>			
+		</region>			
 	</server>
 </config>

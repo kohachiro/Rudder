@@ -14,7 +14,7 @@ package net.combatserver{
 	public class Connection extends Socket {
 		public var me:User;
 		public var room:Room;
-		public var zone:Zone;
+		public var region:Region;
 		public var rooms:HashMap=new HashMap();		
 		public var users:HashMap=new HashMap();			
 		private var handler:ConnectEvent;
@@ -87,8 +87,8 @@ package net.combatserver{
 				case MessageHandler.RoomListNotice:
 					roomListNotice(data);
 					break;
-				case MessageHandler.GetZoneResponse:
-					getZoneResponse(data);
+				case MessageHandler.GetRegionResponse:
+					getRegionResponse(data);
 					break;
 				case MessageHandler.ChangeRoomResponse:
 					changeRoomResponse(data);
@@ -207,12 +207,12 @@ package net.combatserver{
 			}
 			handler.onRoomList(rooms);			
 		}
-		private function getZoneResponse(data:ByteArray):void {
-			trace("["+MessageHandler.GetZoneResponse+"]GetZoneResponse");
-			var message:GetZoneResponseData=new GetZoneResponseData();
+		private function getRegionResponse(data:ByteArray):void {
+			trace("["+MessageHandler.GetRegionResponse+"]GetRegionResponse");
+			var message:GetRegionResponseData=new GetRegionResponseData();
 			message.readFromSlice(data,0);
-			this.zone=message.zone;
-			handler.onZoneInfo(this.zone);		
+			this.region=message.region;
+			handler.onRegionInfo(this.region);		
 		}
 		private function changeRoomResponse(data:ByteArray):void {
 			trace("["+MessageHandler.ChangeRoomResponse+"]ChangeRoomResponse");	
@@ -314,13 +314,13 @@ package net.combatserver{
 			message.writeToBuffer(bytes);
 			sendResponseMessage(MessageHandler.CreateRoomRequest,bytes);
 		}
-		public function getZoneRequest(zoneId:int):void {
-			trace("["+MessageHandler.GetZoneRequest+"]GetZoneRequest");
-			var message:GetZoneRequestData =new GetZoneRequestData();
-			message.zoneid=zoneId;
+		public function getRegionRequest(regionId:int):void {
+			trace("["+MessageHandler.GetRegionRequest+"]GetRegionRequest");
+			var message:GetRegionRequestData =new GetRegionRequestData();
+			message.regionid=regionId;
 			var bytes:WritingBuffer = new WritingBuffer();
 			message.writeToBuffer(bytes);			
-			sendResponseMessage(MessageHandler.GetZoneRequest,bytes);			
+			sendResponseMessage(MessageHandler.GetRegionRequest,bytes);			
 		}
 	}
 }

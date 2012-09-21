@@ -4,9 +4,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import net.combatserver.core.AbstractServer;
 import net.combatserver.core.ExtensionsManager;
@@ -15,6 +16,7 @@ import net.combatserver.messagehandler.UserListNoticeHandler;
 import net.combatserver.protobuf.DataStructures;
 import net.combatserver.protobuf.DataStructures.Property;
 import net.combatserver.protobuf.Plugin.PluginData;
+import net.combatserver.util.ConcurrentVector;
 
 /**
  * @author kohachiro
@@ -25,38 +27,42 @@ public class Room {
 	
 	private final int id;
 	private final String name;
-	private final Zone zone;	
+	private final Region region;	
 	private final int createrId;
-	private final Map<String, String> properties;
-	private final Map<Integer, User> userList;//
-	private final CopyOnWriteArrayList<Integer> from;
+	private final ConcurrentHashMap<String, String> properties;
+	private final ConcurrentHashMap<Integer, User> userList;//
+	private final ConcurrentVector<Integer> from;
 	private final boolean visible;	
 	private final boolean sendUserList;	
 	private final int templateId;
 	private final int maxUsers;
 	private final String password;
 
-	private volatile boolean locked;//
+	private AtomicBoolean lock;//
+	private AtomicInteger spectatorLimit;//not in used
+	
 	private ScheduledFuture<?> scheduledFuture;
 	private ScheduledFuture<?> closeFuture;	
 	private Scheduled scheduled;
-	private int spectatorLimit;//not in used
+
 	/**
 	 * 
 	 */
-	public Room(int id, String name,boolean visible,boolean sendUserList,int templateId,int maxUsers,String password,Zone zone,int createrId) {
+	public Room(int id, String name,boolean visible,boolean sendUserList,int templateId,int maxUsers,String password,Region region,int createrId) {
 		this.id=id;
 		this.name=name;
-		this.zone=zone;
+		this.region=region;
 		this.createrId=createrId;		
 		this.visible=visible;
 		this.sendUserList=sendUserList;
 		this.maxUsers=maxUsers;
 		this.password=password;	
 		this.templateId=templateId;
-		from  = new CopyOnWriteArrayList<Integer>();
+		from  = new ConcurrentVector<Integer>();
 		userList = new ConcurrentHashMap<Integer, User>();		
 		properties = new ConcurrentHashMap<String, String>();
+		this.lock=new AtomicBoolean(false);
+		this.spectatorLimit=new AtomicInteger(0);
 	}
 	public static Room get(int id) {
 		return RoomManager.getRoom(id);
@@ -142,8 +148,8 @@ public class Room {
 	/**
 	 * @return
 	 */
-	public Zone getZone() {
-		return zone;
+	public Region getRegion() {
+		return region;
 	}
 
 	/**
@@ -176,29 +182,32 @@ public class Room {
 	 * @return
 	 */
 	public int getSpectatorLimit() {
-		return spectatorLimit;
+		return spectatorLimit.get();
 	}
 
 	/**
 	 * @param spectatorLimit
 	 */
 	public void setSpectatorLimit(int spectatorLimit) {
-		this.spectatorLimit = spectatorLimit;
+		this.spectatorLimit.set(spectatorLimit);
 	}
 
 	/**
 	 * @return
 	 */
 	public boolean isLocked() {
-		return locked;
+		return lock.get();
 	}
 
 
 	/**
 	 * @param locked
 	 */
-	public void setLocked(boolean locked) {
-		this.locked = locked;
+	public void setLock(boolean lock) {
+		if (lock)
+			this.lock.set(true);
+		else
+			this.lock.set(false);
 	}
 	/**
 	 * @return the templateId
@@ -315,8 +324,8 @@ public class Room {
 	 */
 	private void removeRoomNotice() throws Exception {
 		if (isVisible()){
-			if (getZone().getSendRoomChangeTo() > 0) {
-				Room room = get(getZone().getSendRoomChangeTo());
+			if (getRegion().getSendRoomChangeTo() > 0) {
+				Room room = get(getRegion().getSendRoomChangeTo());
 				if (getId() != room.getId()) {
 				    RoomManager.removeRoomNoticeInvoke(room, getId());
 				}
@@ -366,9 +375,9 @@ public class Room {
 	public void newRoomNotice(int createrId) throws Exception {
 		System.out.print(isVisible());
 		if (isVisible()) {
-			System.out.print(zone.getSendRoomChangeTo());
-			if (zone.getSendRoomChangeTo() > 0) {
-				Room toRoom = get(zone.getSendRoomChangeTo());
+			System.out.print(region.getSendRoomChangeTo());
+			if (region.getSendRoomChangeTo() > 0) {
+				Room toRoom = get(region.getSendRoomChangeTo());
 				System.out.print(toRoom);
 				System.out.print(this);
 				if (!this.equals(toRoom)) {

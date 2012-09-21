@@ -1,5 +1,5 @@
 package net.combatserver.protobuf; 
 option optimize_for = SPEED;  
-message ZoneMessageRequestData{
+message RegionMessageRequestData{
 	required string message = 1;//ÄÚÈİ
 }

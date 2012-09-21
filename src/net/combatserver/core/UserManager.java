@@ -23,23 +23,23 @@ public class UserManager{
 	/**
 	 * user map 通过 channel 查找
 	 */
-	final static Map<Object, User> usersKeyChannelId = new ConcurrentHashMap<Object, User>();
+	final static ConcurrentHashMap<Object, User> usersKeyChannelId = new ConcurrentHashMap<Object, User>();
 	/**
 	 * user map 通过 userId 查找
 	 */
-	final static Map<Integer, User> usersKeyUserId = new ConcurrentHashMap<Integer, User>();// userid
+	final static ConcurrentHashMap<Integer, User> usersKeyUserId = new ConcurrentHashMap<Integer, User>();// userid
 	/**
 	 * user map 通过 userName 查找
 	 */
-	final static Map<String, User> usersKeyUserName = new ConcurrentHashMap<String, User>();
+	final static ConcurrentHashMap<String, User> usersKeyUserName = new ConcurrentHashMap<String, User>();
 	/**
-	 * team map 通过userId 查找
+	 * team map 通过userId 查找 Team
 	 */
-	final static Map<Integer, Team> teams = new ConcurrentHashMap<Integer, Team>();
+	final static ConcurrentHashMap<Integer, Team> teams = new ConcurrentHashMap<Integer, Team>();
 	/**
-	 * guild map 通过guildId 查找
+	 * guild map 通过userId 查找 Guild
 	 */
-	final static Map<Integer, Guild> guilds = new ConcurrentHashMap<Integer, Guild>();
+	final static ConcurrentHashMap<Integer, Guild> guilds = new ConcurrentHashMap<Integer, Guild>();
 
 	/**
 	 * 

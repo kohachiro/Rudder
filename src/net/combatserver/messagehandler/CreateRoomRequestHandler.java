@@ -6,7 +6,7 @@ import net.combatserver.protobuf.ServerError.ReturnStatus;
 import net.combatserver.serverlogic.Room;
 import net.combatserver.serverlogic.Template;
 import net.combatserver.serverlogic.User;
-import net.combatserver.serverlogic.Zone;
+import net.combatserver.serverlogic.Region;
 
 
 /**
@@ -23,11 +23,11 @@ public class CreateRoomRequestHandler {
 		Template template=Template.get(((CreateRoomRequestData)data).getTemplateid());
 		if (template==null)
 			return ServerErrorResponseHandler.invoke(ReturnStatus.STATUS_ROOM_TEMPLATE_NOT_FOUND_VALUE,channel);
-		if (!template.getZone().isCreateRoom())
+		if (!template.getRegion().isCreateRoom())
 			return ServerErrorResponseHandler.invoke(ReturnStatus.STATUS_ROOM_CREATE_FAILED_VALUE,channel);
-		Zone zone=template.getZone();
-		if (zone.isFull())
-			return ServerErrorResponseHandler.invoke(ReturnStatus.STATUS_ZONE_FULL_VALUE,channel);
+		Region region=template.getRegion();
+		if (region.isFull())
+			return ServerErrorResponseHandler.invoke(ReturnStatus.STATUS_REGION_NOT_FOUND_VALUE,channel);
 		User user=User.get(channel);
 		Room toRoom=template.createRoom(user,((CreateRoomRequestData)data).getName(),((CreateRoomRequestData)data).getPassword());
 		Room fromRoom=user.getRoom();

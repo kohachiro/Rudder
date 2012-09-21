@@ -10,25 +10,25 @@ package net.combatserver.protobuf {
 	// @@protoc_insertion_point(imports)
 
 	// @@protoc_insertion_point(class_metadata)
-	public dynamic final class Zone extends com.google.protobuf.Message {
+	public dynamic final class Region extends com.google.protobuf.Message {
 		/**
 		 *  @private
 		 */
-		public static const ID:FieldDescriptor$TYPE_INT32 = new FieldDescriptor$TYPE_INT32("net.combatserver.protobuf.Zone.id", "id", (1 << 3) | com.google.protobuf.WireType.VARINT);
+		public static const ID:FieldDescriptor$TYPE_INT32 = new FieldDescriptor$TYPE_INT32("net.combatserver.protobuf.Region.id", "id", (1 << 3) | com.google.protobuf.WireType.VARINT);
 
 		public var id:int;
 
 		/**
 		 *  @private
 		 */
-		public static const NAME:FieldDescriptor$TYPE_STRING = new FieldDescriptor$TYPE_STRING("net.combatserver.protobuf.Zone.name", "name", (2 << 3) | com.google.protobuf.WireType.LENGTH_DELIMITED);
+		public static const NAME:FieldDescriptor$TYPE_STRING = new FieldDescriptor$TYPE_STRING("net.combatserver.protobuf.Region.name", "name", (2 << 3) | com.google.protobuf.WireType.LENGTH_DELIMITED);
 
 		public var name:String;
 
 		/**
 		 *  @private
 		 */
-		public static const PROPERTIES:RepeatedFieldDescriptor$TYPE_MESSAGE = new RepeatedFieldDescriptor$TYPE_MESSAGE("net.combatserver.protobuf.Zone.properties", "properties", (3 << 3) | com.google.protobuf.WireType.LENGTH_DELIMITED, net.combatserver.protobuf.Property);
+		public static const PROPERTIES:RepeatedFieldDescriptor$TYPE_MESSAGE = new RepeatedFieldDescriptor$TYPE_MESSAGE("net.combatserver.protobuf.Region.properties", "properties", (3 << 3) | com.google.protobuf.WireType.LENGTH_DELIMITED, net.combatserver.protobuf.Property);
 
 		[ArrayElementType("net.combatserver.protobuf.Property")]
 		public var properties:Array = [];
@@ -61,14 +61,14 @@ package net.combatserver.protobuf {
 				switch (tag >> 3) {
 				case 1:
 					if (id$count != 0) {
-						throw new flash.errors.IOError('Bad data format: Zone.id cannot be set twice.');
+						throw new flash.errors.IOError('Bad data format: Region.id cannot be set twice.');
 					}
 					++id$count;
 					this.id = com.google.protobuf.ReadUtils.read$TYPE_INT32(input);
 					break;
 				case 2:
 					if (name$count != 0) {
-						throw new flash.errors.IOError('Bad data format: Zone.name cannot be set twice.');
+						throw new flash.errors.IOError('Bad data format: Region.name cannot be set twice.');
 					}
 					++name$count;
 					this.name = com.google.protobuf.ReadUtils.read$TYPE_STRING(input);

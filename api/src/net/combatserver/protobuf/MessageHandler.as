@@ -6,11 +6,11 @@ package net.combatserver.protobuf {
 		public static const PingIntervalRequest:int = 300;
 		public static const RoomListNotice:int = 1;
 		public static const UserListNotice:int = 2;
-		public static const ZoneListNotice:int = 3;
+		public static const RegionListNotice:int = 3;
 		public static const NetSpeedRequest:int = 304;
 		public static const NetSpeedResponse:int = 5;
-		public static const GetZoneRequest:int = 6;
-		public static const GetZoneResponse:int = 7;
+		public static const GetRegionRequest:int = 6;
+		public static const GetRegionResponse:int = 7;
 		public static const CreateRoomRequest:int = 8;
 		public static const CreateRoomResponse:int = 9;
 		public static const NewRoomNotice:int = 10;
@@ -21,7 +21,7 @@ package net.combatserver.protobuf {
 		public static const PrivateMessageRequest:int = 25;
 		public static const MessageByNameRequest:int = 26;
 		public static const RoomMessageRequest:int = 27;
-		public static const ZoneMessageRequest:int = 28;
+		public static const RegionMessageRequest:int = 28;
 		public static const ServerMessageRequest:int = 29;
 		public static const NewMessageNotice:int = 30;
 		public static const PluginRequest:int = 40;
@@ -54,16 +54,16 @@ package net.combatserver.protobuf {
 					return "RoomListNotice";
 				case UserListNotice:
 					return "UserListNotice";
-				case ZoneListNotice:
-					return "ZoneListNotice";
+				case RegionListNotice:
+					return "RegionListNotice";
 				case NetSpeedRequest:
 					return "NetSpeedRequest";
 				case NetSpeedResponse:
 					return "NetSpeedResponse";
-				case GetZoneRequest:
-					return "GetZoneRequest";
-				case GetZoneResponse:
-					return "GetZoneResponse";
+				case GetRegionRequest:
+					return "GetRegionRequest";
+				case GetRegionResponse:
+					return "GetRegionResponse";
 				case CreateRoomRequest:
 					return "CreateRoomRequest";
 				case CreateRoomResponse:
@@ -84,8 +84,8 @@ package net.combatserver.protobuf {
 					return "MessageByNameRequest";
 				case RoomMessageRequest:
 					return "RoomMessageRequest";
-				case ZoneMessageRequest:
-					return "ZoneMessageRequest";
+				case RegionMessageRequest:
+					return "RegionMessageRequest";
 				case ServerMessageRequest:
 					return "ServerMessageRequest";
 				case NewMessageNotice:

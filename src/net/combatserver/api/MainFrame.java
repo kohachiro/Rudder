@@ -7,7 +7,7 @@ import javax.swing.UIManager;
 
 import net.combatserver.protobuf.DataStructures.Room;
 import net.combatserver.protobuf.DataStructures.User;
-import net.combatserver.protobuf.DataStructures.Zone;
+import net.combatserver.protobuf.DataStructures.Region;
 
 
 public class MainFrame extends javax.swing.JFrame
@@ -50,7 +50,7 @@ public class MainFrame extends javax.swing.JFrame
         con.addEventListener(EventHandler.onJoinRoom, this);
         con.addEventListener(EventHandler.onRoomList, this);
         con.addEventListener(EventHandler.onUserList, this);
-        con.addEventListener(EventHandler.onZoneInfo, this);
+        con.addEventListener(EventHandler.onRegionInfo, this);
         con.addEventListener(EventHandler.onConnected, this);
         con.addEventListener(EventHandler.onUserLeave, this);
         con.addEventListener(EventHandler.onCreateRoom, this); 
@@ -85,14 +85,14 @@ public class MainFrame extends javax.swing.JFrame
     }  
     public void onJoinRoom(Room room){
     	System.out.println("onJoinRoom");
-    	con.getZoneRequest(Connection.DefaultZone);
+    	con.getRegionRequest(Connection.DefaultRegion);
     }
     public void onUserList(List<User> users){
     	System.out.println("onUserList");
     	userListModel.setUserList(Connection.userList);
     }
-    public void onZoneInfo(Zone zone){
-    	System.out.println("onZoneInfo");
+    public void onRegionInfo(Region region){
+    	System.out.println("onRegionInfo");
     	buttonNewRoom.setEnabled(true);
     }
     public void onRoomList(List<Room> rooms){

@@ -11,7 +11,7 @@ import net.combatserver.protobuf.CreateRoom.CreateRoomResponseData;
 import net.combatserver.protobuf.CreateRoom.NewRoomNoticeData;
 import net.combatserver.protobuf.DataStructures.Room;
 import net.combatserver.protobuf.DataStructures.User;
-import net.combatserver.protobuf.GetZone.GetZoneResponseData;
+import net.combatserver.protobuf.GetRegion.GetRegionResponseData;
 import net.combatserver.protobuf.JoinRoom.JoinRoomResponseData;
 import net.combatserver.protobuf.JoinServer.JoinServerResponseData;
 import net.combatserver.protobuf.NetSpeed.NetSpeedResponseData;
@@ -77,8 +77,8 @@ public class DispatcherHandler{
 		case MessageHandler.UserListNotice_VALUE:
 	    	UserListNotice();
 	    	break;
-		case MessageHandler.GetZoneResponse_VALUE:
-			GetZoneInfoResponse();
+		case MessageHandler.GetRegionResponse_VALUE:
+			GetRegionInfoResponse();
 			break;
 		case MessageHandler.RoomListNotice_VALUE:
 	    	RoomListNotice();
@@ -172,11 +172,11 @@ public class DispatcherHandler{
 		handlerEvent(EventHandler.onRoomList,inPutMessage.getRoomList());
 	}
 
-	private void GetZoneInfoResponse() throws IOException{
-		System.out.println("GetZoneInfoRespones");
-		GetZoneResponseData inPutMessage=GetZoneResponseData.parseFrom(parseData());
-		connection.zone=inPutMessage.getZone();
-		handlerEvent(EventHandler.onZoneInfo,connection.zone);
+	private void GetRegionInfoResponse() throws IOException{
+		System.out.println("GetRegionInfoRespones");
+		GetRegionResponseData inPutMessage=GetRegionResponseData.parseFrom(parseData());
+		connection.region=inPutMessage.getRegion();
+		handlerEvent(EventHandler.onRegionInfo,connection.region);
 	}
 	private void UserListNotice() throws IOException {
     	System.out.println("UserListNotice");

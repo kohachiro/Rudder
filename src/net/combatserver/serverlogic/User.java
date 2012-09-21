@@ -4,13 +4,14 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import net.combatserver.core.RoomManager;
 import net.combatserver.core.UserManager;
 import net.combatserver.protobuf.DataStructures;
 import net.combatserver.protobuf.DataStructures.Property;
 import net.combatserver.protobuf.Plugin.PluginData;
+import net.combatserver.util.ConcurrentVector;
 
 /**
  * @author kohachiro
@@ -19,24 +20,25 @@ import net.combatserver.protobuf.Plugin.PluginData;
 public class User {
 	private final int id;
 	private final String name;
-	private final Map<String, String> properties;
-	private final Map<String, String> extProperties;	
+	private final ConcurrentHashMap<String, String> properties;
+	private final ConcurrentHashMap<String, String> extProperties;	
 	private final Object channel;
-	private final CopyOnWriteArrayList<Room>  room;//
+	private final ConcurrentVector<Room>  room;//
 	
-	private int teamId;//not in used
-
+	private AtomicInteger teamId;//not in used
+	private AtomicInteger guildId;//not in used
 	/**
 	 * 
 	 */
 	public User(int id, String name, Object channel) {
-		room  = new CopyOnWriteArrayList<Room>();		
+		room  = new ConcurrentVector<Room>();		
 		properties = new ConcurrentHashMap<String, String>();
 		extProperties = new ConcurrentHashMap<String, String>();
 		this.id = id;
 		this.name = name;
 		this.channel = channel;
-		this.teamId = id;
+		this.teamId = new AtomicInteger(id);
+		this.guildId = new AtomicInteger(0);
 	}
 	public static User get(int id) {
 		return UserManager.getUser(id);
@@ -69,14 +71,14 @@ public class User {
 	 * @return
 	 */
 	public int getTeamId() {
-		return teamId;
+		return teamId.get();
 	}
 
 	/**
 	 * @param teamId
 	 */
 	public void setTeamId(int teamId) {
-		this.teamId = teamId;
+		this.teamId.set(teamId);
 	}
 
 	/**
@@ -203,10 +205,10 @@ public class User {
 		UserManager.sendToServer(mesage, this);		
 	}
 	/* (non-Javadoc)
-	 * @see net.com.sunkey.core.RoomManager#sendToZone(net.com.sunkey.serverlogic.Message,net.com.sunkey.serverlogic.User)
+	 * @see net.com.sunkey.core.RoomManager#sendToRegion(net.com.sunkey.serverlogic.Message,net.com.sunkey.serverlogic.User)
 	 */	
-	public void sendToZone(Message mesage) throws Exception {
-		RoomManager.sendToZone(mesage, this);
+	public void sendToRegion(Message mesage) throws Exception {
+		RoomManager.sendToRegion(mesage, this);
 		
 	}
 	/* (non-Javadoc)

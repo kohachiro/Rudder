@@ -1,0 +1,11 @@
+package net.combatserver.protobuf; 
+import "DataStructures.proto";
+
+option optimize_for = SPEED;  
+
+message GetRegionRequestData {
+	required int32 regionid = 1;//直接发送不使用proto
+}
+message GetRegionResponseData {
+	required Region region = 1;
+}

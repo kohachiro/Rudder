@@ -6,27 +6,23 @@ package net.combatserver.protobuf {
 	import flash.utils.IDataOutput;
 	import flash.utils.IExternalizable;
 	import flash.errors.IOError;
-	import net.combatserver.protobuf.Zone;
 	// @@protoc_insertion_point(imports)
 
 	// @@protoc_insertion_point(class_metadata)
-	public dynamic final class ZoneListNoticeData extends com.google.protobuf.Message {
+	public dynamic final class RegionMessageRequestData extends com.google.protobuf.Message {
 		/**
 		 *  @private
 		 */
-		public static const ZONE:RepeatedFieldDescriptor$TYPE_MESSAGE = new RepeatedFieldDescriptor$TYPE_MESSAGE("net.combatserver.protobuf.ZoneListNoticeData.zone", "zone", (1 << 3) | com.google.protobuf.WireType.LENGTH_DELIMITED, net.combatserver.protobuf.Zone);
+		public static const MESSAGE:FieldDescriptor$TYPE_STRING = new FieldDescriptor$TYPE_STRING("net.combatserver.protobuf.RegionMessageRequestData.message", "message", (1 << 3) | com.google.protobuf.WireType.LENGTH_DELIMITED);
 
-		[ArrayElementType("net.combatserver.protobuf.Zone")]
-		public var zone:Array = [];
+		public var message:String;
 
 		/**
 		 *  @private
 		 */
 		override public final function writeToBuffer(output:com.google.protobuf.WritingBuffer):void {
-			for (var zone$index:uint = 0; zone$index < this.zone.length; ++zone$index) {
-				com.google.protobuf.WriteUtils.writeTag(output, com.google.protobuf.WireType.LENGTH_DELIMITED, 1);
-				com.google.protobuf.WriteUtils.write$TYPE_MESSAGE(output, this.zone[zone$index]);
-			}
+			com.google.protobuf.WriteUtils.writeTag(output, com.google.protobuf.WireType.LENGTH_DELIMITED, 1);
+			com.google.protobuf.WriteUtils.write$TYPE_STRING(output, this.message);
 			for (var fieldKey:* in this) {
 				super.writeUnknown(output, fieldKey);
 			}
@@ -36,11 +32,16 @@ package net.combatserver.protobuf {
 		 *  @private
 		 */
 		override public final function readFromSlice(input:flash.utils.IDataInput, bytesAfterSlice:uint):void {
+			var message$count:uint = 0;
 			while (input.bytesAvailable > bytesAfterSlice) {
 				var tag:uint = com.google.protobuf.ReadUtils.read$TYPE_UINT32(input);
 				switch (tag >> 3) {
 				case 1:
-					this.zone.push(com.google.protobuf.ReadUtils.read$TYPE_MESSAGE(input, new net.combatserver.protobuf.Zone()));
+					if (message$count != 0) {
+						throw new flash.errors.IOError('Bad data format: RegionMessageRequestData.message cannot be set twice.');
+					}
+					++message$count;
+					this.message = com.google.protobuf.ReadUtils.read$TYPE_STRING(input);
 					break;
 				default:
 					super.readUnknown(input, tag);

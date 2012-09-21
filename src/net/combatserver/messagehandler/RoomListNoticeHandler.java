@@ -9,7 +9,7 @@ import net.combatserver.protobuf.Protocol.MessageHandler;
 import net.combatserver.protobuf.RoomList.RoomListNoticeData;
 import net.combatserver.serverlogic.Room;
 import net.combatserver.serverlogic.Server;
-import net.combatserver.serverlogic.Zone;
+import net.combatserver.serverlogic.Region;
 
 /**
  * @author kohachiro
@@ -20,11 +20,11 @@ public class RoomListNoticeHandler {
 	 * @see com.sunkey.tdserver.messagehandler.MessageHandler#invoke(java.lang.Object, org.jboss.netty.channel.Channel)
 	 */
 	//@Override
-	public static int invoke(Object zone, Object channel) throws Exception {
+	public static int invoke(Object region, Object channel) throws Exception {
 		System.out.println("["+channel.hashCode()+"]["+MessageHandler.RoomListNotice_VALUE+"]RoomListNotice");
 		RoomListNoticeData.Builder builder=RoomListNoticeData.newBuilder();
 		Room room;
-		for (Iterator<Entry<Integer, Room>> it = ((Zone)zone).getRoomList().entrySet().iterator();it.hasNext();){
+		for (Iterator<Entry<Integer, Room>> it = ((Region)region).getRoomList().entrySet().iterator();it.hasNext();){
 			room=it.next().getValue();
 			if (room.isVisible()){
 				DataStructures.Room.Builder roomBuilder=DataStructures.Room.newBuilder();

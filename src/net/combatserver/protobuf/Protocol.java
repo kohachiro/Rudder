@@ -16,11 +16,11 @@ public final class Protocol {
     PingIntervalRequest(3, 300),
     RoomListNotice(4, 1),
     UserListNotice(5, 2),
-    ZoneListNotice(6, 3),
+    RegionListNotice(6, 3),
     NetSpeedRequest(7, 304),
     NetSpeedResponse(8, 5),
-    GetZoneRequest(9, 6),
-    GetZoneResponse(10, 7),
+    GetRegionRequest(9, 6),
+    GetRegionResponse(10, 7),
     CreateRoomRequest(11, 8),
     CreateRoomResponse(12, 9),
     NewRoomNotice(13, 10),
@@ -31,7 +31,7 @@ public final class Protocol {
     PrivateMessageRequest(18, 25),
     MessageByNameRequest(19, 26),
     RoomMessageRequest(20, 27),
-    ZoneMessageRequest(21, 28),
+    RegionMessageRequest(21, 28),
     ServerMessageRequest(22, 29),
     NewMessageNotice(23, 30),
     PluginRequest(24, 40),
@@ -58,11 +58,11 @@ public final class Protocol {
     public static final int PingIntervalRequest_VALUE = 300;
     public static final int RoomListNotice_VALUE = 1;
     public static final int UserListNotice_VALUE = 2;
-    public static final int ZoneListNotice_VALUE = 3;
+    public static final int RegionListNotice_VALUE = 3;
     public static final int NetSpeedRequest_VALUE = 304;
     public static final int NetSpeedResponse_VALUE = 5;
-    public static final int GetZoneRequest_VALUE = 6;
-    public static final int GetZoneResponse_VALUE = 7;
+    public static final int GetRegionRequest_VALUE = 6;
+    public static final int GetRegionResponse_VALUE = 7;
     public static final int CreateRoomRequest_VALUE = 8;
     public static final int CreateRoomResponse_VALUE = 9;
     public static final int NewRoomNotice_VALUE = 10;
@@ -73,7 +73,7 @@ public final class Protocol {
     public static final int PrivateMessageRequest_VALUE = 25;
     public static final int MessageByNameRequest_VALUE = 26;
     public static final int RoomMessageRequest_VALUE = 27;
-    public static final int ZoneMessageRequest_VALUE = 28;
+    public static final int RegionMessageRequest_VALUE = 28;
     public static final int ServerMessageRequest_VALUE = 29;
     public static final int NewMessageNotice_VALUE = 30;
     public static final int PluginRequest_VALUE = 40;
@@ -104,11 +104,11 @@ public final class Protocol {
         case 300: return PingIntervalRequest;
         case 1: return RoomListNotice;
         case 2: return UserListNotice;
-        case 3: return ZoneListNotice;
+        case 3: return RegionListNotice;
         case 304: return NetSpeedRequest;
         case 5: return NetSpeedResponse;
-        case 6: return GetZoneRequest;
-        case 7: return GetZoneResponse;
+        case 6: return GetRegionRequest;
+        case 7: return GetRegionResponse;
         case 8: return CreateRoomRequest;
         case 9: return CreateRoomResponse;
         case 10: return NewRoomNotice;
@@ -119,7 +119,7 @@ public final class Protocol {
         case 25: return PrivateMessageRequest;
         case 26: return MessageByNameRequest;
         case 27: return RoomMessageRequest;
-        case 28: return ZoneMessageRequest;
+        case 28: return RegionMessageRequest;
         case 29: return ServerMessageRequest;
         case 30: return NewMessageNotice;
         case 40: return PluginRequest;
@@ -168,7 +168,7 @@ public final class Protocol {
     }
     
     private static final MessageHandler[] VALUES = {
-      PolicyFileRequest, HttpGetRequest, HttpPostRequest, PingIntervalRequest, RoomListNotice, UserListNotice, ZoneListNotice, NetSpeedRequest, NetSpeedResponse, GetZoneRequest, GetZoneResponse, CreateRoomRequest, CreateRoomResponse, NewRoomNotice, RoomPropertyUpdateRequest, RoomPropertyUpdateNotice, UserPropertyUpdateRequest, UserPropertyUpdateNotice, PrivateMessageRequest, MessageByNameRequest, RoomMessageRequest, ZoneMessageRequest, ServerMessageRequest, NewMessageNotice, PluginRequest, PluginResponse, PluginNotice, JoinServerRequest, JoinServerResponse, JoinDefaultRoomRequest, JoinRoomResponse, ChangeRoomRequest, ChangeRoomResponse, NewUserNotice, LogoutRequest, UserLeaveNotice, DisconnectedRequest, RoomRemoveNotice, ServerErrorResponse, ServerTimeResponse, 
+      PolicyFileRequest, HttpGetRequest, HttpPostRequest, PingIntervalRequest, RoomListNotice, UserListNotice, RegionListNotice, NetSpeedRequest, NetSpeedResponse, GetRegionRequest, GetRegionResponse, CreateRoomRequest, CreateRoomResponse, NewRoomNotice, RoomPropertyUpdateRequest, RoomPropertyUpdateNotice, UserPropertyUpdateRequest, UserPropertyUpdateNotice, PrivateMessageRequest, MessageByNameRequest, RoomMessageRequest, RegionMessageRequest, ServerMessageRequest, NewMessageNotice, PluginRequest, PluginResponse, PluginNotice, JoinServerRequest, JoinServerResponse, JoinDefaultRoomRequest, JoinRoomResponse, ChangeRoomRequest, ChangeRoomResponse, NewUserNotice, LogoutRequest, UserLeaveNotice, DisconnectedRequest, RoomRemoveNotice, ServerErrorResponse, ServerTimeResponse, 
     };
     
     public static MessageHandler valueOf(
@@ -201,31 +201,31 @@ public final class Protocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\016Protocol.proto\022\031net.combatserver.proto" +
-      "buf*\270\007\n\016MessageHandler\022\026\n\021PolicyFileRequ" +
+      "buf*\300\007\n\016MessageHandler\022\026\n\021PolicyFileRequ" +
       "est\020\360x\022\024\n\016HttpGetRequest\020\305\216\001\022\025\n\017HttpPost" +
       "Request\020\317\240\001\022\030\n\023PingIntervalRequest\020\254\002\022\022\n" +
-      "\016RoomListNotice\020\001\022\022\n\016UserListNotice\020\002\022\022\n" +
-      "\016ZoneListNotice\020\003\022\024\n\017NetSpeedRequest\020\260\002\022" +
-      "\024\n\020NetSpeedResponse\020\005\022\022\n\016GetZoneRequest\020" +
-      "\006\022\023\n\017GetZoneResponse\020\007\022\025\n\021CreateRoomRequ" +
-      "est\020\010\022\026\n\022CreateRoomResponse\020\t\022\021\n\rNewRoom" +
-      "Notice\020\n\022\035\n\031RoomPropertyUpdateRequest\020\013\022",
-      "\034\n\030RoomPropertyUpdateNotice\020\014\022\035\n\031UserPro" +
-      "pertyUpdateRequest\020\r\022\034\n\030UserPropertyUpda" +
-      "teNotice\020\016\022\031\n\025PrivateMessageRequest\020\031\022\030\n" +
-      "\024MessageByNameRequest\020\032\022\026\n\022RoomMessageRe" +
-      "quest\020\033\022\026\n\022ZoneMessageRequest\020\034\022\030\n\024Serve" +
-      "rMessageRequest\020\035\022\024\n\020NewMessageNotice\020\036\022" +
-      "\021\n\rPluginRequest\020(\022\022\n\016PluginResponse\020)\022\020" +
-      "\n\014PluginNotice\020*\022\025\n\021JoinServerRequest\0202\022" +
-      "\026\n\022JoinServerResponse\0203\022\033\n\026JoinDefaultRo" +
-      "omRequest\020\340\002\022\024\n\020JoinRoomResponse\0205\022\025\n\021Ch",
-      "angeRoomRequest\0206\022\026\n\022ChangeRoomResponse\020" +
-      "7\022\021\n\rNewUserNotice\0208\022\021\n\rLogoutRequest\020<\022" +
-      "\023\n\017UserLeaveNotice\020=\022\027\n\023DisconnectedRequ" +
-      "est\020>\022\024\n\020RoomRemoveNotice\020D\022\030\n\023ServerErr" +
-      "orResponse\020\361\002\022\027\n\022ServerTimeResponse\020\374\002B\002" +
-      "H\001"
+      "\016RoomListNotice\020\001\022\022\n\016UserListNotice\020\002\022\024\n" +
+      "\020RegionListNotice\020\003\022\024\n\017NetSpeedRequest\020\260" +
+      "\002\022\024\n\020NetSpeedResponse\020\005\022\024\n\020GetRegionRequ" +
+      "est\020\006\022\025\n\021GetRegionResponse\020\007\022\025\n\021CreateRo" +
+      "omRequest\020\010\022\026\n\022CreateRoomResponse\020\t\022\021\n\rN" +
+      "ewRoomNotice\020\n\022\035\n\031RoomPropertyUpdateRequ",
+      "est\020\013\022\034\n\030RoomPropertyUpdateNotice\020\014\022\035\n\031U" +
+      "serPropertyUpdateRequest\020\r\022\034\n\030UserProper" +
+      "tyUpdateNotice\020\016\022\031\n\025PrivateMessageReques" +
+      "t\020\031\022\030\n\024MessageByNameRequest\020\032\022\026\n\022RoomMes" +
+      "sageRequest\020\033\022\030\n\024RegionMessageRequest\020\034\022" +
+      "\030\n\024ServerMessageRequest\020\035\022\024\n\020NewMessageN" +
+      "otice\020\036\022\021\n\rPluginRequest\020(\022\022\n\016PluginResp" +
+      "onse\020)\022\020\n\014PluginNotice\020*\022\025\n\021JoinServerRe" +
+      "quest\0202\022\026\n\022JoinServerResponse\0203\022\033\n\026JoinD" +
+      "efaultRoomRequest\020\340\002\022\024\n\020JoinRoomResponse",
+      "\0205\022\025\n\021ChangeRoomRequest\0206\022\026\n\022ChangeRoomR" +
+      "esponse\0207\022\021\n\rNewUserNotice\0208\022\021\n\rLogoutRe" +
+      "quest\020<\022\023\n\017UserLeaveNotice\020=\022\027\n\023Disconne" +
+      "ctedRequest\020>\022\024\n\020RoomRemoveNotice\020D\022\030\n\023S" +
+      "erverErrorResponse\020\361\002\022\027\n\022ServerTimeRespo" +
+      "nse\020\374\002B\002H\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -9,19 +9,19 @@ import net.combatserver.core.RoomManager;
  * @author kohachiro
  * 
  */
-public class Zone {
+public class Region {
 	private final int id;
 	private final String name;
 	private final int sendRoomChangeTo;
 	private final boolean sendUserCountChange;
-	private final Map<String, String> properties;
-	private final Map<Integer, Room> roomList;
+	private final ConcurrentHashMap<String, String> properties;
+	private final ConcurrentHashMap<Integer, Room> roomList;
 	private final boolean createRoom;
 	private final int maxRoom;	
 	/**
 	 * 
 	 */
-	public Zone(int id, String name, int sendRoomChangeTo, boolean sendUserCountChange,boolean createRoom,int maxRoom) {
+	public Region(int id, String name, int sendRoomChangeTo, boolean sendUserCountChange,boolean createRoom,int maxRoom) {
 		this.id=id;
 		this.name=name;
 		this.sendRoomChangeTo=sendRoomChangeTo;
@@ -32,10 +32,10 @@ public class Zone {
 		this.maxRoom=maxRoom;
 	}
 	/* (non-Javadoc)
-	 * @see net.com.sunkey.core.RoomManager#getZone(int)
+	 * @see net.com.sunkey.core.RoomManager#getRegion(int)
 	 */		
-	public static Zone get(int zoneId) {
-		return RoomManager.getZone(zoneId);
+	public static Region get(int regionId) {
+		return RoomManager.getRegion(regionId);
 	}	
 	/**
 	 * 是否满  full 将导致能创建新房间
@@ -153,7 +153,7 @@ public class Zone {
 	 */
 	@Override
 	public String toString() {
-		return "Zone [id=" + id + ", name=" + name + ", properties="
+		return "Region [id=" + id + ", name=" + name + ", properties="
 				+ properties + "]";
 	}
 

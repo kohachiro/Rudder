@@ -13,8 +13,8 @@ import net.combatserver.protobuf.ChangeRoom.ChangeRoomRequestData;
 import net.combatserver.protobuf.CreateRoom.CreateRoomRequestData;
 import net.combatserver.protobuf.DataStructures.Room;
 import net.combatserver.protobuf.DataStructures.User;
-import net.combatserver.protobuf.DataStructures.Zone;
-import net.combatserver.protobuf.GetZone.GetZoneRequestData;
+import net.combatserver.protobuf.DataStructures.Region;
+import net.combatserver.protobuf.GetRegion.GetRegionRequestData;
 import net.combatserver.protobuf.JoinServer.JoinServerRequestData;
 import net.combatserver.protobuf.Protocol.MessageHandler;
 import net.combatserver.protobuf.RoomMessage.RoomMessageRequestData;
@@ -36,10 +36,10 @@ public class Connection implements Runnable{
 	public static final Map<String, Object> listers = new HashMap<String, Object>();
 	public static final Map<Integer, Room> roomList = new HashMap<Integer, Room>();
 	public static final Map<Integer, User> userList = new HashMap<Integer, User>();	
-	public static final int DefaultZone=1;	
+	public static final int DefaultRegion=1;	
 	public static Connection instance;
 	public User me;
-	public Zone zone;
+	public Region region;
 	public int activeRoomId;
 	
 	private Socket socket;
@@ -112,12 +112,12 @@ public class Connection implements Runnable{
 		sendResponse(MessageHandler.JoinDefaultRoomRequest_VALUE);
 		System.out.println("joinDefaultRoom");
 	}	
-	public void getZoneRequest( int zoneid ) {
-		GetZoneRequestData.Builder builder=GetZoneRequestData.newBuilder();
-		builder.setZoneid(zoneid);
-		GetZoneRequestData outPutMessage=builder.build();
-		sendResponse(MessageHandler.GetZoneRequest_VALUE,outPutMessage.toByteArray());
-		System.out.println("GetZoneInfoRequest");
+	public void getRegionRequest( int regionid ) {
+		GetRegionRequestData.Builder builder=GetRegionRequestData.newBuilder();
+		builder.setRegionid(regionid);
+		GetRegionRequestData outPutMessage=builder.build();
+		sendResponse(MessageHandler.GetRegionRequest_VALUE,outPutMessage.toByteArray());
+		System.out.println("GetRegionInfoRequest");
 	}
 	public void changeRoom(int roomid) {
 		ChangeRoomRequestData.Builder builder=ChangeRoomRequestData.newBuilder();
@@ -134,7 +134,7 @@ public class Connection implements Runnable{
 		if (router==-2)
 			sendResponse(MessageHandler.RoomMessageRequest_VALUE,message.toByteArray());
 		else if (router==-3)
-			sendResponse(MessageHandler.ZoneMessageRequest_VALUE,message.toByteArray());
+			sendResponse(MessageHandler.RegionMessageRequest_VALUE,message.toByteArray());
 		else if (router==-4)			
 			sendResponse(MessageHandler.ServerMessageRequest_VALUE,message.toByteArray());				
 

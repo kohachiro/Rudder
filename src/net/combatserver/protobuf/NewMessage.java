@@ -12,13 +12,13 @@ public final class NewMessage {
       implements com.google.protobuf.ProtocolMessageEnum {
     ROUTER_USER(0, -1),
     ROUTER_ROOM(1, -2),
-    ROUTER_ZONE(2, -3),
+    ROUTER_REGION(2, -3),
     ROUTER_SERVER(3, -4),
     ;
     
     public static final int ROUTER_USER_VALUE = -1;
     public static final int ROUTER_ROOM_VALUE = -2;
-    public static final int ROUTER_ZONE_VALUE = -3;
+    public static final int ROUTER_REGION_VALUE = -3;
     public static final int ROUTER_SERVER_VALUE = -4;
     
     
@@ -28,7 +28,7 @@ public final class NewMessage {
       switch (value) {
         case -1: return ROUTER_USER;
         case -2: return ROUTER_ROOM;
-        case -3: return ROUTER_ZONE;
+        case -3: return ROUTER_REGION;
         case -4: return ROUTER_SERVER;
         default: return null;
       }
@@ -60,7 +60,7 @@ public final class NewMessage {
     }
     
     private static final MessageRouter[] VALUES = {
-      ROUTER_USER, ROUTER_ROOM, ROUTER_ZONE, ROUTER_SERVER, 
+      ROUTER_USER, ROUTER_ROOM, ROUTER_REGION, ROUTER_SERVER, 
     };
     
     public static MessageRouter valueOf(
@@ -725,10 +725,10 @@ public final class NewMessage {
       "tobuf\"\203\001\n\024NewMessageNoticeData\022\016\n\006userid" +
       "\030\001 \002(\005\022\020\n\010username\030\002 \002(\t\0228\n\006router\030\003 \002(\016" +
       "2(.net.combatserver.protobuf.MessageRout" +
-      "er\022\017\n\007message\030\004 \002(\t*y\n\rMessageRouter\022\030\n\013" +
+      "er\022\017\n\007message\030\004 \002(\t*{\n\rMessageRouter\022\030\n\013" +
       "ROUTER_USER\020\377\377\377\377\377\377\377\377\377\001\022\030\n\013ROUTER_ROOM\020\376\377" +
-      "\377\377\377\377\377\377\377\001\022\030\n\013ROUTER_ZONE\020\375\377\377\377\377\377\377\377\377\001\022\032\n\rRO" +
-      "UTER_SERVER\020\374\377\377\377\377\377\377\377\377\001B\002H\001"
+      "\377\377\377\377\377\377\377\001\022\032\n\rROUTER_REGION\020\375\377\377\377\377\377\377\377\377\001\022\032\n\r" +
+      "ROUTER_SERVER\020\374\377\377\377\377\377\377\377\377\001B\002H\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

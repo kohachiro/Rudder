@@ -40,7 +40,7 @@ public abstract  class AbstractServer {
     /**
      * 网络事件接口 用于回调
      */
-    public static InterfaceServerHandler callBackHandler;   
+    public static ServerHandler callBackHandler;   
 	/**
 	 * 控制台
 	 */
@@ -149,7 +149,7 @@ public abstract  class AbstractServer {
 	 * 控制台界面
 	 */
 	public void console() {
-		//TODO room list and zone list
+		//TODO room list and region list
 		loadExtensions();
 		systemInfo = new SystemInfo();		
 		consoleInput = new BufferedReader(new InputStreamReader(System.in));
@@ -172,7 +172,7 @@ public abstract  class AbstractServer {
 					System.out.println("\tserver: server screen.");
 					System.out.println("\tuser: user screen.");
 					System.out.println("\troom: room screen.");
-					System.out.println("\tzone: zone screen.");			
+					System.out.println("\tregion: region screen.");			
 					System.out.println("\t[userid]: user info");
 					System.out.println("\thelp: this screen. ");
 				} else if ("load".equals(command)) {
@@ -186,9 +186,9 @@ public abstract  class AbstractServer {
 					System.out.println("Room:");
 					System.out.println("count:"+RoomManager.getRoomCount());					
 					System.out.println(RoomManager.RoomList());
-				} else if ("zone".equals(command)) {
-					System.out.println("Zone:");
-					System.out.println(RoomManager.ZoneList());
+				} else if ("region".equals(command)) {
+					System.out.println("Region:");
+					System.out.println(RoomManager.RegionList());
 				} else {
 					systemInfo(systemInfo);
 				}

@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="lib/google-collections-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/jedis-2.0.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/js.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -15,15 +15,15 @@ public class Template {
 	private final Map<String, String> properties;
 	private final String scheduledClass;
 	private final int maxUsers;
-	private final Zone zone;
+	private final Region region;
 
 	/**
 	 * 
 	 */
-	public Template(int id,String name,Zone zone,String scheduledClass,int maxUsers) {
+	public Template(int id,String name,Region region,String scheduledClass,int maxUsers) {
 		this.id = id;
 		this.name = name;
-		this.zone = zone;
+		this.region = region;
 		this.scheduledClass = scheduledClass;
 		this.maxUsers = maxUsers;
 		properties = new ConcurrentHashMap<String, String>();		
@@ -66,8 +66,8 @@ public class Template {
 	/**
 	 * @return
 	 */
-	public Zone getZone() {
-		return this.zone;
+	public Region getRegion() {
+		return this.region;
 	}
 
 	/**

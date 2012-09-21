@@ -10,13 +10,13 @@ enum MessageHandler {
 	PingIntervalRequest		= 300;
 	RoomListNotice			= 1;
 	UserListNotice			= 2;
-	ZoneListNotice 			= 3;
+	RegionListNotice 		= 3;
 
 	NetSpeedRequest			= 304;
 	NetSpeedResponse		= 5;
 
-	GetZoneRequest			= 6;
-	GetZoneResponse 		= 7;
+	GetRegionRequest		= 6;
+	GetRegionResponse 		= 7;
 
 	CreateRoomRequest		= 8;
 	CreateRoomResponse		= 9;
@@ -29,8 +29,8 @@ enum MessageHandler {
 	
 	PrivateMessageRequest		= 25;
 	MessageByNameRequest		= 26;
-	RoomMessageRequest		= 27;	
-	ZoneMessageRequest		= 28;	
+	RoomMessageRequest			= 27;
+	RegionMessageRequest		= 28;
 	ServerMessageRequest		= 29;
 	NewMessageNotice		= 30;
 

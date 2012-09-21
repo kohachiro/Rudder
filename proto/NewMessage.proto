@@ -4,7 +4,7 @@ option optimize_for = SPEED;
 enum MessageRouter {
 	ROUTER_USER = -1;
 	ROUTER_ROOM = -2;
-	ROUTER_ZONE = -3;
+	ROUTER_REGION = -3;
 	ROUTER_SERVER = -4;
 }
 message NewMessageNoticeData{

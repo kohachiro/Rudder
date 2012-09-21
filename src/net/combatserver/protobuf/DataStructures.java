@@ -493,7 +493,7 @@ public final class DataStructures {
     // @@protoc_insertion_point(class_scope:net.combatserver.protobuf.Property)
   }
   
-  public interface ZoneOrBuilder
+  public interface RegionOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
     // required int32 id = 1;
@@ -514,32 +514,32 @@ public final class DataStructures {
     net.combatserver.protobuf.DataStructures.PropertyOrBuilder getPropertiesOrBuilder(
         int index);
   }
-  public static final class Zone extends
+  public static final class Region extends
       com.google.protobuf.GeneratedMessage
-      implements ZoneOrBuilder {
-    // Use Zone.newBuilder() to construct.
-    private Zone(Builder builder) {
+      implements RegionOrBuilder {
+    // Use Region.newBuilder() to construct.
+    private Region(Builder builder) {
       super(builder);
     }
-    private Zone(boolean noInit) {}
+    private Region(boolean noInit) {}
     
-    private static final Zone defaultInstance;
-    public static Zone getDefaultInstance() {
+    private static final Region defaultInstance;
+    public static Region getDefaultInstance() {
       return defaultInstance;
     }
     
-    public Zone getDefaultInstanceForType() {
+    public Region getDefaultInstanceForType() {
       return defaultInstance;
     }
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return net.combatserver.protobuf.DataStructures.internal_static_net_combatserver_protobuf_Zone_descriptor;
+      return net.combatserver.protobuf.DataStructures.internal_static_net_combatserver_protobuf_Region_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return net.combatserver.protobuf.DataStructures.internal_static_net_combatserver_protobuf_Zone_fieldAccessorTable;
+      return net.combatserver.protobuf.DataStructures.internal_static_net_combatserver_protobuf_Region_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -679,41 +679,41 @@ public final class DataStructures {
       return super.writeReplace();
     }
     
-    public static net.combatserver.protobuf.DataStructures.Zone parseFrom(
+    public static net.combatserver.protobuf.DataStructures.Region parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static net.combatserver.protobuf.DataStructures.Zone parseFrom(
+    public static net.combatserver.protobuf.DataStructures.Region parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static net.combatserver.protobuf.DataStructures.Zone parseFrom(byte[] data)
+    public static net.combatserver.protobuf.DataStructures.Region parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static net.combatserver.protobuf.DataStructures.Zone parseFrom(
+    public static net.combatserver.protobuf.DataStructures.Region parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static net.combatserver.protobuf.DataStructures.Zone parseFrom(java.io.InputStream input)
+    public static net.combatserver.protobuf.DataStructures.Region parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static net.combatserver.protobuf.DataStructures.Zone parseFrom(
+    public static net.combatserver.protobuf.DataStructures.Region parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry)
                .buildParsed();
     }
-    public static net.combatserver.protobuf.DataStructures.Zone parseDelimitedFrom(java.io.InputStream input)
+    public static net.combatserver.protobuf.DataStructures.Region parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input)) {
@@ -722,7 +722,7 @@ public final class DataStructures {
         return null;
       }
     }
-    public static net.combatserver.protobuf.DataStructures.Zone parseDelimitedFrom(
+    public static net.combatserver.protobuf.DataStructures.Region parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -733,12 +733,12 @@ public final class DataStructures {
         return null;
       }
     }
-    public static net.combatserver.protobuf.DataStructures.Zone parseFrom(
+    public static net.combatserver.protobuf.DataStructures.Region parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static net.combatserver.protobuf.DataStructures.Zone parseFrom(
+    public static net.combatserver.protobuf.DataStructures.Region parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -748,7 +748,7 @@ public final class DataStructures {
     
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(net.combatserver.protobuf.DataStructures.Zone prototype) {
+    public static Builder newBuilder(net.combatserver.protobuf.DataStructures.Region prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -761,18 +761,18 @@ public final class DataStructures {
     }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements net.combatserver.protobuf.DataStructures.ZoneOrBuilder {
+       implements net.combatserver.protobuf.DataStructures.RegionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return net.combatserver.protobuf.DataStructures.internal_static_net_combatserver_protobuf_Zone_descriptor;
+        return net.combatserver.protobuf.DataStructures.internal_static_net_combatserver_protobuf_Region_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return net.combatserver.protobuf.DataStructures.internal_static_net_combatserver_protobuf_Zone_fieldAccessorTable;
+        return net.combatserver.protobuf.DataStructures.internal_static_net_combatserver_protobuf_Region_fieldAccessorTable;
       }
       
-      // Construct using net.combatserver.protobuf.DataStructures.Zone.newBuilder()
+      // Construct using net.combatserver.protobuf.DataStructures.Region.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -811,24 +811,24 @@ public final class DataStructures {
       
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return net.combatserver.protobuf.DataStructures.Zone.getDescriptor();
+        return net.combatserver.protobuf.DataStructures.Region.getDescriptor();
       }
       
-      public net.combatserver.protobuf.DataStructures.Zone getDefaultInstanceForType() {
-        return net.combatserver.protobuf.DataStructures.Zone.getDefaultInstance();
+      public net.combatserver.protobuf.DataStructures.Region getDefaultInstanceForType() {
+        return net.combatserver.protobuf.DataStructures.Region.getDefaultInstance();
       }
       
-      public net.combatserver.protobuf.DataStructures.Zone build() {
-        net.combatserver.protobuf.DataStructures.Zone result = buildPartial();
+      public net.combatserver.protobuf.DataStructures.Region build() {
+        net.combatserver.protobuf.DataStructures.Region result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
       
-      private net.combatserver.protobuf.DataStructures.Zone buildParsed()
+      private net.combatserver.protobuf.DataStructures.Region buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        net.combatserver.protobuf.DataStructures.Zone result = buildPartial();
+        net.combatserver.protobuf.DataStructures.Region result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
@@ -836,8 +836,8 @@ public final class DataStructures {
         return result;
       }
       
-      public net.combatserver.protobuf.DataStructures.Zone buildPartial() {
-        net.combatserver.protobuf.DataStructures.Zone result = new net.combatserver.protobuf.DataStructures.Zone(this);
+      public net.combatserver.protobuf.DataStructures.Region buildPartial() {
+        net.combatserver.protobuf.DataStructures.Region result = new net.combatserver.protobuf.DataStructures.Region(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -863,16 +863,16 @@ public final class DataStructures {
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof net.combatserver.protobuf.DataStructures.Zone) {
-          return mergeFrom((net.combatserver.protobuf.DataStructures.Zone)other);
+        if (other instanceof net.combatserver.protobuf.DataStructures.Region) {
+          return mergeFrom((net.combatserver.protobuf.DataStructures.Region)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
       
-      public Builder mergeFrom(net.combatserver.protobuf.DataStructures.Zone other) {
-        if (other == net.combatserver.protobuf.DataStructures.Zone.getDefaultInstance()) return this;
+      public Builder mergeFrom(net.combatserver.protobuf.DataStructures.Region other) {
+        if (other == net.combatserver.protobuf.DataStructures.Region.getDefaultInstance()) return this;
         if (other.hasId()) {
           setId(other.getId());
         }
@@ -1215,15 +1215,15 @@ public final class DataStructures {
         return propertiesBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:net.combatserver.protobuf.Zone)
+      // @@protoc_insertion_point(builder_scope:net.combatserver.protobuf.Region)
     }
     
     static {
-      defaultInstance = new Zone(true);
+      defaultInstance = new Region(true);
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:net.combatserver.protobuf.Zone)
+    // @@protoc_insertion_point(class_scope:net.combatserver.protobuf.Region)
   }
   
   public interface UserOrBuilder
@@ -2828,10 +2828,10 @@ public final class DataStructures {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_net_combatserver_protobuf_Property_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_net_combatserver_protobuf_Zone_descriptor;
+    internal_static_net_combatserver_protobuf_Region_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_net_combatserver_protobuf_Zone_fieldAccessorTable;
+      internal_static_net_combatserver_protobuf_Region_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_net_combatserver_protobuf_User_descriptor;
   private static
@@ -2853,15 +2853,15 @@ public final class DataStructures {
     java.lang.String[] descriptorData = {
       "\n\024DataStructures.proto\022\031net.combatserver" +
       ".protobuf\"\'\n\010Property\022\014\n\004name\030\001 \002(\t\022\r\n\005v" +
-      "alue\030\002 \002(\t\"Y\n\004Zone\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002" +
-      " \002(\t\0227\n\nproperties\030\003 \003(\0132#.net.combatser" +
-      "ver.protobuf.Property\"Y\n\004User\022\n\n\002id\030\001 \002(" +
-      "\005\022\014\n\004name\030\002 \002(\t\0227\n\nproperties\030\003 \003(\0132#.ne" +
-      "t.combatserver.protobuf.Property\"\201\001\n\004Roo" +
-      "m\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\020\n\010maxUsers\030" +
-      "\003 \002(\005\022\024\n\014needPassword\030\004 \002(\010\0227\n\npropertie" +
-      "s\030\005 \003(\0132#.net.combatserver.protobuf.Prop",
-      "ertyB\002H\001"
+      "alue\030\002 \002(\t\"[\n\006Region\022\n\n\002id\030\001 \002(\005\022\014\n\004name" +
+      "\030\002 \002(\t\0227\n\nproperties\030\003 \003(\0132#.net.combats" +
+      "erver.protobuf.Property\"Y\n\004User\022\n\n\002id\030\001 " +
+      "\002(\005\022\014\n\004name\030\002 \002(\t\0227\n\nproperties\030\003 \003(\0132#." +
+      "net.combatserver.protobuf.Property\"\201\001\n\004R" +
+      "oom\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\020\n\010maxUser" +
+      "s\030\003 \002(\005\022\024\n\014needPassword\030\004 \002(\010\0227\n\npropert" +
+      "ies\030\005 \003(\0132#.net.combatserver.protobuf.Pr",
+      "opertyB\002H\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2876,14 +2876,14 @@ public final class DataStructures {
               new java.lang.String[] { "Name", "Value", },
               net.combatserver.protobuf.DataStructures.Property.class,
               net.combatserver.protobuf.DataStructures.Property.Builder.class);
-          internal_static_net_combatserver_protobuf_Zone_descriptor =
+          internal_static_net_combatserver_protobuf_Region_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_net_combatserver_protobuf_Zone_fieldAccessorTable = new
+          internal_static_net_combatserver_protobuf_Region_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_net_combatserver_protobuf_Zone_descriptor,
+              internal_static_net_combatserver_protobuf_Region_descriptor,
               new java.lang.String[] { "Id", "Name", "Properties", },
-              net.combatserver.protobuf.DataStructures.Zone.class,
-              net.combatserver.protobuf.DataStructures.Zone.Builder.class);
+              net.combatserver.protobuf.DataStructures.Region.class,
+              net.combatserver.protobuf.DataStructures.Region.Builder.class);
           internal_static_net_combatserver_protobuf_User_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_net_combatserver_protobuf_User_fieldAccessorTable = new

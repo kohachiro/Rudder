@@ -3,7 +3,7 @@ package net.combatserver.framework;
 import java.nio.ByteBuffer;
 
 import net.combatserver.core.AbstractServer;
-import net.combatserver.core.InterfaceServerHandler;
+import net.combatserver.core.ServerHandler;
 
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
@@ -21,7 +21,7 @@ import org.jboss.netty.channel.SimpleChannelUpstreamHandler;
  * @author kohachiro
  *
  */
-public class NettyServerHandler extends SimpleChannelUpstreamHandler implements InterfaceServerHandler{
+public class NettyServerHandler extends SimpleChannelUpstreamHandler implements ServerHandler{
 	public NettyServerHandler() {
 		AbstractServer.callBackHandler = this;
 	}

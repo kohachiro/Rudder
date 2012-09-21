@@ -10,7 +10,7 @@ import net.combatserver.core.RoomManager;
 import net.combatserver.serverlogic.Room;
 import net.combatserver.serverlogic.Team;
 import net.combatserver.serverlogic.Template;
-import net.combatserver.serverlogic.Zone;
+import net.combatserver.serverlogic.Region;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -73,9 +73,9 @@ public class ParseXML {
 				if (node.getNodeName().equals("default_room_id")) {
 					AbstractServer.defaultRoom = parseInteger(node);
 				}else
-				if (node.getNodeName().equals("zone")) {
-					NodeList zones = node.getChildNodes();
-					RoomManager.initNewZone(parseZone(zones));
+				if (node.getNodeName().equals("region")) {
+					NodeList regions = node.getChildNodes();
+					RoomManager.initNewRegion(parseRegion(regions));
 				}else
 				if (node.getNodeName().equals("key")) {
 					System.out.print(node.getFirstChild().getNodeValue());
@@ -84,43 +84,43 @@ public class ParseXML {
 		}		
 	}
 
-	private Zone parseZone(NodeList zones) {
-		Zone zoneObj = new Zone(parseInteger(findNode("id", zones)),
-				parseString(findNode("name", zones)), parseInteger(findNode(
-						"send_room_change_to", zones)), parseBoolean(findNode(
-						"send_user_count_change", zones)),parseBoolean(findNode("create_room", zones)),parseInteger(findNode("max_rooms", zones)));
+	private Region parseRegion(NodeList regions) {
+		Region regionObj = new Region(parseInteger(findNode("id", regions)),
+				parseString(findNode("name", regions)), parseInteger(findNode(
+						"send_room_change_to", regions)), parseBoolean(findNode(
+						"send_user_count_change", regions)),parseBoolean(findNode("create_room", regions)),parseInteger(findNode("max_rooms", regions)));
 
-		for (int i = 0; i < zones.getLength(); i++) {
-			Node zone = zones.item(i);
-			if (zone.getNodeName().equals("property"))
-				zoneObj.addProperty(parseName(zone), parseString(zone));
-			if (zone.getNodeName().equals("team")) {
-				NodeList teams = zone.getChildNodes();
+		for (int i = 0; i < regions.getLength(); i++) {
+			Node region = regions.item(i);
+			if (region.getNodeName().equals("property"))
+				regionObj.addProperty(parseName(region), parseString(region));
+			if (region.getNodeName().equals("team")) {
+				NodeList teams = region.getChildNodes();
 				//Team teamObj = 
-						parseTeam(teams, zoneObj);
+						parseTeam(teams, regionObj);
 			}
-			if (zone.getNodeName().equals("room")) {
-				NodeList rooms = zone.getChildNodes();
-				Room roomObj = parseRoom(rooms, zoneObj);
+			if (region.getNodeName().equals("room")) {
+				NodeList rooms = region.getChildNodes();
+				Room roomObj = parseRoom(rooms, regionObj);
 				RoomManager.initNewRoom(roomObj);
 			}
-			if (zone.getNodeName().equals("room_template")) {
-				NodeList templates = zone.getChildNodes();
-				Template templateObj = parseTemplate(templates, zoneObj);
+			if (region.getNodeName().equals("room_template")) {
+				NodeList templates = region.getChildNodes();
+				Template templateObj = parseTemplate(templates, regionObj);
 				RoomManager.initTemplate(templateObj);
 			}
 		}
-		return zoneObj;
+		return regionObj;
 	}
 
-	private Team parseTeam(NodeList teams, Zone zone) {
+	private Team parseTeam(NodeList teams, Region region) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private Template parseTemplate(NodeList templates, Zone zone) {
+	private Template parseTemplate(NodeList templates, Region region) {
 		Template templateObj = new Template(parseInteger(findNode("id",
-				templates)), parseString(findNode("name", templates)), zone
+				templates)), parseString(findNode("name", templates)), region
 				,parseString(findNode("scheduled", templates)),parseInteger(findNode("max_users", templates)));
 		for (int i = 0; i < templates.getLength(); i++) {
 			Node template = templates.item(i);
@@ -131,7 +131,7 @@ public class ParseXML {
 		return templateObj;
 	}
 
-	private Room parseRoom(NodeList rooms, Zone zone) {
+	private Room parseRoom(NodeList rooms, Region region) {
 		Room roomObj = new Room(parseInteger(findNode("id", rooms)),
 				parseString(findNode("name", rooms)), 
 				parseBoolean(findNode("visible", rooms)), 
@@ -139,7 +139,7 @@ public class ParseXML {
 				0, 
 				parseInteger(findNode("max_users", rooms)), 
 				parseString(findNode("password", rooms)), 
-				zone, AbstractServer.systemUser.getId());
+				region, AbstractServer.systemUser.getId());
 		String[] tmp=parseStringArray(findNode("from", rooms));
 		for(int i=0;i<tmp.length;i++)
 		    roomObj.addFrom(Integer.parseInt(tmp[i]));		

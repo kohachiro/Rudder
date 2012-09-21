@@ -9,7 +9,7 @@ import java.nio.ByteBuffer;
  * @author kohachiro
  *
  */
-public interface InterfaceServerHandler {	
+public interface ServerHandler {	
 	/**
 	 * 发送消息类 
 	 * @param methodID
