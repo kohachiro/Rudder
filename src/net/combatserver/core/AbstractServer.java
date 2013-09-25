@@ -24,77 +24,77 @@ import net.combatserver.util.SystemInfo;
 
 
 /**
- * 抽象服务器类 用于启动服务器
+ * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
  * @author kohachiro
  * 
  */
 public abstract  class AbstractServer {
     /**
-     * 业务线程池
+     * 业锟斤拷锟教尺筹拷
      */
     public static ExecutorService threadPool;
     /**
-     * 定时器线程池
+     * 锟斤拷时锟斤拷锟教尺筹拷
      */
     public static ScheduledExecutorService scheduledPool;
     /**
-     * 网络事件接口 用于回调
+     * 锟斤拷锟斤拷锟铰硷拷锟接匡拷 锟斤拷锟节回碉拷
      */
     public static ServerHandler callBackHandler;   
 	/**
-	 * 控制台
+	 * 锟斤拷锟斤拷台
 	 */
 	public static BufferedReader consoleInput;
 	/**
-	 * 采集系统信息对象
+	 * 锟缴硷拷系统锟斤拷息锟斤拷锟斤拷
 	 */
 	public static SystemInfo systemInfo;
 	/**
-	 * 端口 config xml配置文件会重置这个值
+	 * 锟剿匡拷 config xml锟斤拷锟斤拷锟侥硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷值
 	 */
 	public static int port = 7890;
 	
 	public static int PolicyFilePort = 843;
 	
 	/**
-	 * log文件大小限制  未启用 config xml配置文件会重置这个值
+	 * log锟侥硷拷锟斤拷小锟斤拷锟斤拷  未锟斤拷锟斤拷 config xml锟斤拷锟斤拷锟侥硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷值
 	 */
 	public static int logFileLimit;
 	/**
-	 * 客户端ping间隔 config xml配置文件会重置这个值
+	 * 锟酵伙拷锟斤拷ping锟斤拷锟斤拷 config xml锟斤拷锟斤拷锟侥硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷值
 	 */
 	public static int pingInterval = 10000;
 	/**
-	 * 默认房间号 config xml配置文件会重置这个值
+	 * 默锟较凤拷锟斤拷锟斤拷 config xml锟斤拷锟斤拷锟侥硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷值
 	 */
 	public static int defaultRoom = 2;
 	/**
-	 * 服务器名称 config xml配置文件会重置这个值
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 config xml锟斤拷锟斤拷锟侥硷拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷值
 	 */
 	public static String name;
 	/**
-	 * log文件
+	 * log锟侥硷拷
 	 */
 	public static String logFile;
 	/**
-	 * 消息处理类所在路径
+	 * 锟斤拷息锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷路锟斤拷
 	 */
 	public static String MessageClassPath;
 	/**
-	 * 消息格式类所在路径
+	 * 锟斤拷息锟斤拷式锟斤拷锟斤拷锟斤拷路锟斤拷
 	 */
 	public static String ProtobufClassPath;
 	/**
-	 * net框架名称 用户显示
+	 * net锟斤拷锟斤拷锟斤拷锟斤拷 锟矫伙拷锟斤拷示
 	 */
 	public static String framework;
 	/**
-	 * 发布系统消息时的所用的系统账户
+	 * 锟斤拷锟斤拷系统锟斤拷息时锟斤拷锟斤拷锟矫碉拷系统锟剿伙拷
 	 */
 	public static User systemUser;	
 	/**
-	 * 自动加载 Extensions<br/>
-	 * 定义成 false 则需要在控制台打load命令 手动加载<br/>
+	 * 锟皆讹拷锟斤拷锟斤拷 Extensions<br/>
+	 * 锟斤拷锟斤拷锟斤拷 false 锟斤拷锟斤拷要锟节匡拷锟斤拷台锟斤拷load锟斤拷锟斤拷 锟街讹拷锟斤拷锟斤拷<br/>
 	 * @see net.combatserver.core.ExtensionsManager
 	 */
 	public static boolean autoLoadExtensions=true;
@@ -107,7 +107,7 @@ public abstract  class AbstractServer {
 
 
 	/**
-	 * 构造函数<br/>
+	 * 锟斤拷锟届函锟斤拷<br/>
 	 * threadPool 
 	 * 
 	 */
@@ -135,9 +135,9 @@ public abstract  class AbstractServer {
 	}
 
 	/**
-	 * 网络绑定<br/>
-	 * 将寻找每个网卡上可以绑定的地址 分别绑定<br/>
-	 * mina 和 grizzly 不能在绑定失败正确抛出IOException<br/>
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷<br/>
+	 * 锟斤拷寻锟斤拷每锟斤拷锟斤拷锟斤拷锟较匡拷锟皆绑定的碉拷址 锟街憋拷锟斤拷锟斤拷<br/>
+	 * mina 锟斤拷 grizzly 锟斤拷锟斤拷锟节帮拷锟斤拷失锟斤拷锟斤拷确锟阶筹拷IOException<br/>
 	 */
 	public void networkBind() {
 		if (!(new NetworkBind()).bind(this,port))
@@ -146,7 +146,7 @@ public abstract  class AbstractServer {
 			System.exit(1);
 	}
 	/**
-	 * 控制台界面
+	 * 锟斤拷锟斤拷台锟斤拷锟斤拷
 	 */
 	public void console() {
 		//TODO room list and region list
@@ -232,8 +232,8 @@ public abstract  class AbstractServer {
 		threadPool.execute(new HandlerRunnable(buffer, channel));
 	}
 	/**
-	 * 加载扩展模块<br/>
-	 * autoLoadExtensions控制 线程 是否 start<br/>
+	 * 锟斤拷锟斤拷锟斤拷展模锟斤拷<br/>
+	 * autoLoadExtensions锟斤拷锟斤拷 锟竭筹拷 锟角凤拷 start<br/>
 	 */
 	private void loadExtensions() {
 		extensionsManager=new ExtensionsManager();
@@ -244,20 +244,20 @@ public abstract  class AbstractServer {
 	}
 	
 	/**
-	 * 输出 控制台标题
+	 * 锟斤拷锟斤拷 锟斤拷锟斤拷台锟斤拷锟斤拷
 	 */
 	private void printTitle() {
 		System.out.println("*************************************************");
-		System.out.println("*       Rudder Online Game Server V1.1.0        *");
+		System.out.println("*       Tiburon Online Game Server V1.1.0       *");
 		System.out.println("*                                               *");
-		System.out.println("*             (c) 2011 Rudder co.ltd.           *");
+		System.out.println("*             (c) 2011 Kohachiro co.ltd.        *");
 		System.out.println("*                                               *");	
 		System.out.println("*************************************************");
 		System.out.println();
 		System.out.println("Framework:\t"+framework);		
 	}
 	/**
-	 * 检查log文件
+	 * 锟斤拷锟斤拷log锟侥硷拷
 	 */
 	private static void logfile() {
 		String dir = "log";
@@ -269,8 +269,8 @@ public abstract  class AbstractServer {
 	}
 
 	/**
-	 * 检查并返回  config.xml文件<br/>
-	 * @return  config.xml文件
+	 * 锟斤拷锟介并锟斤拷锟斤拷  config.xml锟侥硷拷<br/>
+	 * @return  config.xml锟侥硷拷
 	 * @see net.combatserver.util.ParseXML
 	 */
 	private static FileInputStream configXMLfile() {
@@ -291,10 +291,10 @@ public abstract  class AbstractServer {
 	}
 
 	/**
-	 * 检查crossdomain。xml 目前未启用<br/>
-	 * 由于mina grizzly netty实现http get file 方法各不相同<br/>
-	 * crossdomain。xml 的处理交由  
-	 * net.com.sunkey.messagehandler.HttpGetRequestHandler 来完成<br/>
+	 * 锟斤拷锟斤拷crossdomain锟斤拷xml 目前未锟斤拷锟斤拷<br/>
+	 * 锟斤拷锟斤拷mina grizzly netty实锟斤拷http get file 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷同<br/>
+	 * crossdomain锟斤拷xml 锟侥达拷锟斤拷锟斤拷锟斤拷  
+	 * net.com.sunkey.messagehandler.HttpGetRequestHandler 锟斤拷锟斤拷锟斤拷<br/>
 	 * @see net.combatserver.messagehandler.HttpGetRequestHandler
 	 */
 	private static void crossDomainfile() {
@@ -308,8 +308,8 @@ public abstract  class AbstractServer {
 		}
 	}
 	/**
-	 * 获取系统信息<br/>
-	 * 通过 refresh()方法刷新<br/>
+	 * 锟斤拷取系统锟斤拷息<br/>
+	 * 通锟斤拷 refresh()锟斤拷锟斤拷刷锟斤拷<br/>
 	 * @param systemInfo
 	 */
 	private void systemInfo(SystemInfo systemInfo) {
@@ -328,10 +328,10 @@ public abstract  class AbstractServer {
 	}
 	
 	/**
-	 * 绑定实现方法 <br/>
-	 * 输入 地址返回 绑定<br/>
-	 * @param inetSocketAddress 绑定地址
-	 * @throws Exception 抛出 IOException
+	 * 锟斤拷锟斤拷实锟街凤拷锟斤拷 <br/>
+	 * 锟斤拷锟斤拷 锟斤拷址锟斤拷锟斤拷 锟斤拷锟斤拷<br/>
+	 * @param inetSocketAddress 锟襟定碉拷址
+	 * @throws Exception 锟阶筹拷 IOException
 	 */
 	public abstract void bind(InetSocketAddress inetSocketAddress) throws Exception ;		
 }
